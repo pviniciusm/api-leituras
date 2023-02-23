@@ -15,6 +15,18 @@ export class User {
     this._livros = [];
   }
 
+  public get livros() {
+    return this._livros;
+  }
+  public set livros(livros: Livro[]) {
+    this._livros = livros;
+  }
+  public addLivros(livro: Livro) {
+    this.livros.push(livro);
+  }
+  public get id() {
+    return this._id;
+  }
   public get nome() {
     return this._nome;
   }

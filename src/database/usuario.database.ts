@@ -13,4 +13,9 @@ export class UsuarioDataBase {
       (user) => user.username === nome && user.password === password
     );
   }
+  public getById(id: string) {
+    return usuario.find((user) => {
+      return user.id === id;
+    });
+  }
 }
