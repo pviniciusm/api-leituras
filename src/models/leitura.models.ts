@@ -7,7 +7,7 @@ export class Livro {
         public nome: string,
         public genero: string,
         public data: Date,
-        public avaliação: string[]
+        public avaliacao: string[]
     ) {
         this.idLivro = creatUuid();
     }
