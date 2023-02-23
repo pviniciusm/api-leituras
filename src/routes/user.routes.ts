@@ -4,6 +4,8 @@ import { LoginValidatorMiddleware } from "../middlewares/login-validator-middlew
 
 export const userRoutes = () => {
   const app = Router();
+  app.post("/", new UsuarioController().createUser);
+  app.get("/", new UsuarioController().list);
   app.get(
     "/user",
     LoginValidatorMiddleware.loginValidator,

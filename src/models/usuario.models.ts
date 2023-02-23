@@ -23,7 +23,29 @@ export class User {
     return this._senha;
   }
 
+  public set userName(userName: string) {
+    this._userNome = userName;
+  }
+  public set senha(senha: string) {
+    this._senha = senha;
+  }
+  public set name(name: string) {
+    this._nome = name;
+  }
+  public set meta(meta: number) {
+    this._meta = meta;
+  }
   public get userNome() {
     return this._userNome;
+  }
+
+  public toJson() {
+    return {
+      id: this._id,
+      livros: this._livros,
+      userNome: this._userNome,
+      nome: this._nome,
+      meta: this._meta,
+    };
   }
 }
