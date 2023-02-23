@@ -17,7 +17,11 @@ export class UsuarioController {
 
       return res
         .status(200)
-        .send({ ok: true, message: "User found successfully", data: usuario });
+        .send({
+          ok: true,
+          message: "User found successfully",
+          data: usuario.toJson(),
+        });
     } catch (error: any) {
       return ServerError.genericError(res, error);
     }
