@@ -8,9 +8,9 @@ export class UsuarioDataBase {
   public list() {
     return [...usuario];
   }
-  public login(nome: string, senha: string) {
+  public login(nome: string, password: string) {
     return usuario.find(
-      (user) => user.userNome === nome && user.senha === senha
+      (user) => user.username === nome && user.password === password
     );
   }
 }

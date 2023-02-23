@@ -9,11 +9,11 @@ export class LoginValidatorMiddleware {
     next: NextFunction
   ) {
     try {
-      const { userNome, senha } = req.body;
-      if (!userNome) {
+      const { username, password } = req.body;
+      if (!username) {
         return RequestError.fieldNotProvided(res, "UserName");
       }
-      if (!senha) {
+      if (!password) {
         return RequestError.fieldNotProvided(res, "Senha");
       }
 

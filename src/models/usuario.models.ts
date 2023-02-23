@@ -6,8 +6,8 @@ export class User {
   private _livros: Livro[];
 
   constructor(
-    private _userNome: string,
-    private _senha: string,
+    private _username: string,
+    private _password: string,
     private _nome: string,
     private _meta: number
   ) {
@@ -19,31 +19,31 @@ export class User {
     return this._nome;
   }
 
-  public get senha() {
-    return this._senha;
+  public get password() {
+    return this._password;
   }
 
   public set userName(userName: string) {
-    this._userNome = userName;
+    this._username = userName;
   }
-  public set senha(senha: string) {
-    this._senha = senha;
+  public set password(password: string) {
+    this._password = password;
   }
-  public set name(name: string) {
-    this._nome = name;
+  public set nome(nome: string) {
+    this._nome = nome;
   }
   public set meta(meta: number) {
     this._meta = meta;
   }
-  public get userNome() {
-    return this._userNome;
+  public get username() {
+    return this._username;
   }
 
   public toJson() {
     return {
       id: this._id,
       livros: this._livros,
-      userNome: this._userNome,
+      username: this._username,
       nome: this._nome,
       meta: this._meta,
     };
