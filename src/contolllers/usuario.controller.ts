@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { User } from "../models/usuario.models";
 import { UsuarioDataBase } from "../database/usuario.database";
-export class Usuario {
+export class UsuarioController {
   public createUser(req: Request, res: Response) {
     try {
       const { userName, senha, name, meta } = req.body;
@@ -24,6 +24,29 @@ export class Usuario {
         ok: true,
         message: "O usuário foi criado com sucesso",
         data: newUser,
+      });
+    } catch (error: any) {
+      return res.status(500).send({
+        ok: false,
+        message: error.toString("Internal Serve Error"),
+      });
+    }
+  }
+
+  public list(req: Request, res: Response) {
+    try {
+      const { userNome } = req.params;
+      const database = new UsuarioDataBase();
+      let usuario = database.list();
+
+      if (userNome) {
+        usuario = usuario.filter((usuario) => usuario.userNome === userNome);
+      }
+
+      res.status(200).send({
+        ok: true,
+        message: "Lista de Usuarios",
+        data: usuario.map((item) => item.toJson()),
       });
     } catch (error: any) {
       return res.status(500).send({

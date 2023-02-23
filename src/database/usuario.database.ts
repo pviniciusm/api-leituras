@@ -5,4 +5,7 @@ export class UsuarioDataBase {
   public create(user: User) {
     return usuario.push(user);
   }
+  public list() {
+    return [...usuario];
+  }
 }

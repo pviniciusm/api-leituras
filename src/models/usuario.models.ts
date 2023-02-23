@@ -26,4 +26,17 @@ export class User {
   public set meta(meta: number) {
     this._meta = meta;
   }
+  public get userNome() {
+    return this._userNome;
+  }
+
+  public toJson() {
+    return {
+      id: this._id,
+      livros: this._livros,
+      userNome: this._userNome,
+      nome: this._nome,
+      meta: this._meta,
+    };
+  }
 }
