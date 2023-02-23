@@ -23,7 +23,7 @@ export class UsuarioController {
       return res.status(200).send({
         ok: true,
         message: "O usuário foi criado com sucesso",
-        data: newUser,
+        data: newUser.toJson(),
       });
     } catch (error: any) {
       return res.status(500).send({
