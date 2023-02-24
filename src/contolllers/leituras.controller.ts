@@ -32,4 +32,39 @@ export class LeiturasController {
       return ServerError.genericError(res, error);
     }
   }
+
+  public list(req: Request, res: Response) {
+    try {
+      const { userId } = req.params;
+
+      if (!userId) {
+        return RequestError.fieldNotProvided(res, "UserId");
+      }
+      const database = new UsuarioDataBase();
+      const foundUser = database.getById(userId);
+
+      if (!foundUser) {
+        return RequestError.notFound(res, "User");
+      }
+
+      const livrosAno = foundUser.livros.filter(
+        (livro) => livro.data.getFullYear() === new Date().getFullYear()
+      );
+      const paginasAno = livrosAno.reduce((prev, current) => {
+        return prev + current.numPaginas;
+      }, 0);
+
+      return res.status(200).send({
+        ok: true,
+        message: "Lista de leituras",
+        data: {
+          livros: foundUser.livros,
+          livirosAno: livrosAno.length,
+          paginasAno,
+        },
+      });
+    } catch (error: any) {
+      return ServerError.genericError(res, error);
+    }
+  }
 }

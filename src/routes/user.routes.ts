@@ -13,5 +13,6 @@ export const userRoutes = () => {
     new UsuarioController().login
   );
   app.post("/:userId/leituras", new LeiturasController().create);
+  app.get("/:userId/leituras", new LeiturasController().list);
   return app;
 };
